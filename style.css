@@ -1,0 +1,29 @@
+body{
+  background: #111a28;
+  margin: 0 0 0 0;
+}
+
+h1{
+  color: white;
+  text-align: center;
+}
+
+#menu{
+  background: white;
+}
+
+#container{
+  max-width: 600px;
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.square{
+  width: 30%;
+  padding-bottom: 30%;
+  background: blue;
+  float: left;
+  margin: 1.66%;
+  border-radius: 10%;
+}
