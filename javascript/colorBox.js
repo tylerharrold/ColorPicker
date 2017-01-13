@@ -12,6 +12,10 @@ class ColorBox{
     domObject.isWinner = true;
   }
 
+  static removeWinnerStatus(domObject){
+    domObject.isWinner = false;
+  }
+
   static getRandomColor(){
     var r = Math.ceil((Math.random() * 255));
     var g = Math.ceil((Math.random() * 255));

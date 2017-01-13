@@ -44,13 +44,17 @@ class Game{
   // event handler for the colored boxes
   colorBoxEvent(){
     if(this.isWinner == true){
-      alert("winner");
+      ColorBox.removeWinnerStatus(this);
+      game.handleWin(); // poor design, bad hack, but hey its my first attempt here
     }
     else{
       ColorBox.fade(this);
     }
   }
 
-  // method to fade out an incorrectly clicked box
+
+  handleWin(){
+    // fade
+  }
 
 }
