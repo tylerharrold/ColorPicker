@@ -10,14 +10,32 @@ function init(){
   initializeColorSquares();
   initializeResetButton();
   initializeDifficultyButtons();
+  // set diff buttons appropriately
+  var diffBtns = document.querySelectorAll(".difficulty");
+  diffBtns[0].classList.toggle("difficulty");
   resetGame();
 }
 
 function initializeDifficultyButtons(){
   var diffBtns = document.querySelectorAll(".difficulty");
-  for(var i = 0 ; i < diffBtns.length ; i++){
-    diffBtns[i].addEventListener("click" , toggleDifficulty);
-  }
+  diffBtns[0].addEventListener("click" , function(){
+    difficulty = 'easy';
+    numberOfColors = 3;
+    var easy = document.querySelectorAll("button")[1];
+    easy.classList.toggle("difficulty");
+    var hard = document.querySelectorAll("button")[2];
+    hard.classList.toggle("difficulty");
+    resetGame();
+  });
+  diffBtns[1].addEventListener("click" , function(){
+    difficulty = 'hard';
+    numberOfColors = 6;
+    var easy = document.querySelectorAll("button")[1];
+    easy.classList.toggle("difficulty");
+    var hard = document.querySelectorAll("button")[2];
+    hard.classList.toggle("difficulty");
+    resetGame();
+  });
 }
 
 function initializeColorSquares(){
@@ -42,7 +60,7 @@ function resetGame(){
   displayWinningColor();
   toggleResetButton(false);
   toggleWinnerAnnounce(false);
-  toggleDifficultyButtons(difficulty);
+  changeTitleColor("#98BAF2");
 }
 
 function setupColors(){
@@ -83,7 +101,6 @@ function getRandomColor(){
 // function to be called whenever a color button is clicked
 function checkForWinner(){
   if(this.style.background === winningColor){
-    console.log("winner");
     handleWinningClick();
   }
   else{
@@ -100,8 +117,6 @@ function handleWinningClick(){
   toggleWinnerAnnounce(true);
   // change the reset button to display replay
   toggleResetButton(true);
-  // deactivate relevant buttons
-  deactivateButtons(true);
 
 }
 
@@ -150,34 +165,26 @@ function handleIncorrectClick(clickedObj){
 }
 
 function toggleDifficultyButtons(diff){
+  var btns = document.querySelectorAll("button");
   if(diff === 'hard'){
     // toggle easy button's class
-    var easyBtn = document.querySelectorAll("button")[1];
-    easyBtn.classList.toggle("difficulty");
+    btns[1].classList.toggle("difficulty");
+    btns[2].classList.toggle("difficulty");
   }
   else{
-    var easyBtn = document.querySelectorAll("button")[2];
-    easyBtn.classList.toggle("difficulty");
+    btns[1].classList.toggle("difficulty");
+    btns[2].classList.toggle("difficulty");
   }
 }
 
-function toggleDifficulty(){
-  console.log("but clicked");
-  // change the difficulty
-  if(difficulty === 'hard'){
-    // set all to easy
-    difficulty = 'easy';
-    numberOfColors = 3;
+function setupDiffButtons(){
+  var btns = document.querySelectorAll("button");
+  if(difficulty === 'easy'){
+    btns[1]
   }
   else{
-    // set back to hard
-    difficulty = 'hard';
-    numberOfColors = 6;
+
   }
-  // change the diff buttons
-  toggleDifficultyButtons(difficulty);
-  // reset the game
-  resetGame();
 }
 
 init();
